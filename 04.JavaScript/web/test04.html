@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function f1()
+        {
+            console.log('call f1');
+        }
+
+        //练习使用回调函数
+        //点击页面时执行函数f1
+        window.onclick=f1;    //回调函数，不能加(),加了()表示立马调用
+
+        //函数本身也是一种数据类型
+        //函数也可以作为参数
+        function f2(x,y)
+        {
+            console.log(x);
+            //console.log(y);
+            y();
+        }
+        f2(5,f1);
+
+        //函数作为参数示例二
+        function f3(a,b)
+        {
+            return a-b;
+        }
+
+        var arr=[2,56,-1,5,77,10];
+        arr.sort(f3);
+        console.log(arr);
+
+        //遍历数组中的元素
+        function show(value,index)
+        {
+            console.log(index,value);
+        }
+
+        arr.forEach(show);
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

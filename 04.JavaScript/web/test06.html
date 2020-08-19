@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //学习箭头函数的使用
+        //示例1
+        // var a=function (x){
+        //     return x*2;
+        // }
+        //以上示例可被简写成如下表达式
+        var a=x=>x*2;
+        console.log(a(2));
+
+        //示例2
+        //如果箭头函数没有参数或者有多个参数，则必须使用小括号表示参数部分
+        var a2=(x,y)=>x*y;
+        console.log(a2(3,5));
+
+        //示例3
+        //箭头函数有多行时,则必须使用大括号括起来
+        var a3=(x,y)=>{
+            var sum=x+y;
+            return sum;
+        }
+        console.log(a3(3,5));
+
+        //示例4 箭头函数也算是匿名函数的一种
+        window.onclick=()=>{
+            console.log(555);
+        };
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

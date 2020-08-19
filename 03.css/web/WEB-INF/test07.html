@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--练习使用盒子模型-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{
+            width:250px;
+            background: #ccc;
+        }
+        .first{
+            /*border-top-width: 2px;*/
+            /*border-top-color: red;*/
+            /*border-top-style: solid;*/
+            /*border-bottom-width: 4px;*/
+            /*border-bottom-color: blue;*/
+            /*border-bottom-style: dashed;*/
+            border-top:2px solid green;
+            border-bottom: 4px dotted yellow;
+        }
+        .second{
+            border:5px solid blue;
+            border-radius: 5px;
+            padding-left: 5px;
+        }
+        .third{
+            margin-top: 100px;
+            margin-left: 30px;
+        }
+        body{
+            margin-left: 0px;
+            border: solid;
+        }
+
+
+    </style>
+</head>
+<body>
+        <p class="first">段落</p>
+        <p class="second">段落</p>
+        <p class="third">段落</p>
+        <p class="third">段落</p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习获取document属性</title>
+    <script>
+        function getProperty(){
+            //示例1 获取链接
+            // var obj=document.getElementById('baidu');
+            // console.log(obj.href);
+
+            //示例二 获取用户输入信息
+            // var obj=document.getElementById('username');
+            // console.log(obj.value);
+
+            //示例三 获取单选标签是否选中
+            var obj=document.getElementById('male');
+            console.log(obj.checked);   //checked属性之后true或者false
+
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="访问属性" onclick="getProperty()"><br>
+    <hr>
+    <br>
+    <a href="https://www.baidu.com" target="_blank" id="baidu">打开百度<a/>
+    用户输入:<input type="text" name="username" id="username"><br>
+    性别：<input type="radio" name="sex" value="male" id="male" checked>男
+        <input type="radio" name="sex" value="female" id="female">女
+
+</body>
+</html>

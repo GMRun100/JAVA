@@ -1,0 +1,16 @@
+package PGM;
+//导入scanner
+import java.util.Scanner;
+public class input {
+	public static void main(String[] args)
+	{
+		//2.创建Scanner对象，名为input
+		Scanner input=new Scanner(System.in);
+		//使用Scanner获取数据
+		String name=input.next();
+		System.out.println("姓名："+name);
+		
+		input.close();
+	}
+
+}

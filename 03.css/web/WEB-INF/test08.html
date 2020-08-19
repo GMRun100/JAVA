@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrapper{
+            width: 800px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        .d1,.d2,.d3{
+            width: 100px;
+            height:100px;
+        }
+        .d1{
+            background: red;
+            position: relative;
+            top:10px;
+            left:30px;
+            z-index: -6;   /*当有元素重叠时，设置元素的堆叠效果，默认为0，数大的在上面，但是只对非static元素类型有效*/
+        }
+        .d2{
+            background: blue;
+            /*position:absolute;*/
+            /*bottom:50px;*/
+            /*right: 100px;*/
+        }
+        .d3{
+            background: green;
+            position: fixed;
+            right:100px;
+            top:200px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="d1">div1</div>
+        <div class="d2">div2</div>
+        <div class="d3">div3</div>
+    </div>
+</body>
+</html>

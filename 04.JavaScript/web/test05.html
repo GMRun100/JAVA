@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //学习匿名函数的使用
+        //匿名函数:函数是没有名字的,匿名函数都是有应用场景的
+        //场景一
+        window.onclick=function (){   //匿名函数啊，一把用于回调
+            console.log(111);
+        }
+
+        //场景二
+        var f1=function (){
+            console.log(2222);
+        }
+        //场景三
+
+        var arr=[1,2,3,4,5];
+        arr.forEach(function (value,index){
+            console.log(index,value);
+        });
+
+        //场景四 自执行函数
+            (function (){
+            console.log(33333);
+        })();
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习JSON</title>
+    <script>
+        //定义一个JSON对象
+        var user={
+            "id":1001,
+            "name":"tom",
+            "age":20,
+            "height":180.5,
+            //在JSON对象中可以嵌套JSON对象
+            "address":{
+                "province":"江苏省",
+                "city":"南京",
+                "district":"秦淮区",
+            }
+        }
+        //访问方式：对象名.属性名
+        console.log(user.address.province);
+        console.log(user.address.city);
+
+        //定义一个JSON数组
+        var numes=[
+        {
+            "id":1,
+            "username":"a"
+        },{
+            "id":2,
+                "username":"b"
+        },{
+            "id":3,
+                "username":"b"
+        }
+        ];
+        for(var i=0;i<numes.length;i++)
+        {
+            console.log(numes[i].id+"   "+numes[i].username);
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
