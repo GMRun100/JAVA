@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>学习获取document属性</title>
+    <title>学习获取和设置document属性</title>
+    <style>
+        .hello{
+            width:100px;
+            height:100px ;
+            background: red;
+            font-size: 20px;
+        }
+        .world{
+            width:100px;
+            height: 100px;
+            background: green;
+        }
+    </style>
     <script>
+        //示例：获取属性
         function getProperty(){
+
             //示例1 获取链接
             // var obj=document.getElementById('baidu');
             // console.log(obj.href);
@@ -14,20 +29,67 @@
             // console.log(obj.value);
 
             //示例三 获取单选标签是否选中
+            // var obj=document.getElementById('male');
+            // console.log(obj.checked);   //checked属性之后true或者false
+
+            //设置超链接地址
+            // var obj=document.getElementById('baidu');
+            // obj.href="http://www.w3school.com.cn";
+
+            //设置checked属性
             var obj=document.getElementById('male');
-            console.log(obj.checked);   //checked属性之后true或者false
+            obj.checked=true;
 
         }
+
+        //示例：获取内容
+        function getContent()
+        {
+            let obj=document.getElementById('div');
+            //获取内容
+            //console.log(obj.innerHTML);   //按HTML格式获取内容
+            //console.log(obj.innerText);   //按文本格式获取内容
+
+            //设置内容
+            //obj.innerHTML='<h2>hahahaha<h2>'
+            obj.innerText='<h2>hahahaha</h2>'
+        }
+
+        //设置：CSS属性
+        function setCSS()
+        {
+            //设置CSS属性
+            var obj=document.getElementById('div');
+
+
+            obj.className='world';
+
+            //获取CSS属性  不知道为啥显示有点问题
+
+            console.log(window.getComputedStyle(div,null)['width']);  //获取内嵌样式或外联样式
+            //console.log(obj.style.fontSize);   //此种方法只能获取行内样式
+        }
+
     </script>
 </head>
 <body>
     <input type="button" value="访问属性" onclick="getProperty()"><br>
+    <input type="button" value="访问内容" onclick="getContent()"><br>
+    <input type="button" value="设置CSS" onclick="setCSS()"><br>
     <hr>
     <br>
     <a href="https://www.baidu.com" target="_blank" id="baidu">打开百度<a/>
     用户输入:<input type="text" name="username" id="username"><br>
-    性别：<input type="radio" name="sex" value="male" id="male" checked>男
-        <input type="radio" name="sex" value="female" id="female">女
+    性别：<input type="radio" name="sex" value="male" id="male" >男
+        <input type="radio" name="sex" value="female" id="female checked">女<br>
+    <hr>
+     <div id="div" >
+         <p>
+             hello world!
+         </p>
+     </div>
+
+
 
 </body>
 </html>

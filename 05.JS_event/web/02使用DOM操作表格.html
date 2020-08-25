@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习使用DOM来操作表格</title>
+    <style>
+        #mytable{
+            text-align: center;
+            border: black;
+            border-width: 1px;
+        }
+        #mydiv{
+            text-align: center;
+            //border-width:1px;
+            //border: 1px solid;
+
+        }
+        td{
+            width: 100px;
+        }
+        table{margin: auto}
+    </style>
+    <script>
+        window.onload=function (){
+            //为添加按钮添加功能
+            $('add').onclick=function (){
+                //1.创建表单元素
+                var tagchk=document.createElement('td');
+                var tagname=document.createElement('td');
+                var tagage=document.createElement('td');
+                var tagsex=document.createElement('td');
+                var tagphone=document.createElement('td');
+                var tagoption=document.createElement('td');
+
+                //2.获取用户输入
+                tagname.innerText=$('iname').value;
+                tagage.innerText=$('iage').value;
+                tagsex.innerText=$('m').checked?$('m').value:$('f').value;
+                tagphone.innerText=$('iphone').value;
+
+                //3.创建一个tr
+                var vtr=document.createElement('tr');
+
+                //创建复选框
+                var itagchk=document.createElement('input');
+                itagchk.type='checkbox';
+                itagchk.name='check';
+                itagchk.className="ccheck";
+                itagchk.onclick=function ()
+                {
+                    var mchktmp=document.querySelectorAll('.ccheck');
+                    var chknum=0;
+                    for(var iii in mchktmp)
+                    {
+                        if(mchktmp[iii].checked)
+                        {
+                            chknum=chknum+1;
+                        }
+                    }
+
+                    if(chknum==mchktmp.length)
+                    {
+                        $('allcheck').checked=true;
+                    }
+                    else
+                    {
+                        $('allcheck').checked=false;
+                    }
+                }
+                tagchk.appendChild(itagchk);
+                vtr.appendChild(tagchk);
+
+                vtr.appendChild(tagname);
+                vtr.appendChild(tagage);
+                vtr.appendChild(tagsex);
+                vtr.appendChild(tagphone);
+
+                //创建删除按钮
+                var tagbtn=document.createElement('input')
+                tagbtn.type='button'
+                tagbtn.value='删除';
+                tagbtn.onclick=function (){
+                    this.parentNode.parentNode.remove();
+                }
+                tagoption.appendChild(tagbtn);
+
+                vtr.appendChild(tagoption);
+
+
+
+
+
+                //4.添加tr
+                $('mtbody').appendChild(vtr);
+
+            }
+
+            //为删除按钮添加功能
+            var btndelete= document.querySelectorAll('.delete');
+            for(var vbtn in btndelete)
+            {
+                btndelete[vbtn].onclick=function (){
+                    this.parentNode.parentNode.remove();
+                }
+            }
+
+            //为从首行删除按钮添加功能
+            $('deletefirst').onclick=function (){
+                $('mtbody').querySelectorAll('tr')[0].remove();
+            }
+
+            //为从末行删除按钮添加功能
+            $('deletelast').onclick=function (){
+                var vtrtmp=$('mtbody').querySelectorAll('tr');
+                vtrtmp[vtrtmp.length-1].remove();
+            }
+
+            //为全选按钮添加事件
+            $('allcheck').onclick=function (){
+                if($('allcheck').checked)
+                {
+                    //获取所有的checkbox
+                    var chktmp=document.querySelectorAll('.ccheck');
+
+                    for(var i in chktmp)
+                        chktmp[i].checked=true;
+                }
+                else
+                {
+                    //获取所有的checkbox
+                    var chktmp=document.querySelectorAll('.ccheck');
+                    console.log(chktmp);
+                    for(var i in chktmp)
+                        chktmp[i].checked=false;
+                }
+            }
+
+            //为单选框添加事件，当单选框全部选中时，全选按钮应该处于全部选中状态
+            var mchk=document.querySelectorAll('.ccheck');
+            for(var ii in mchk)
+                mchk[ii].onclick=function (){
+                    var mchktmp=document.querySelectorAll('.ccheck');
+                    var chknum=0;
+                    for(var iii in mchktmp)
+                    {
+                        if(mchktmp[iii].checked)
+                        {
+                            chknum=chknum+1;
+                        }
+                    }
+
+                    if(chknum==mchktmp.length)
+                    {
+                        $('allcheck').checked=true;
+                    }
+                    else
+                    {
+                        $('allcheck').checked=false;
+                    }
+
+                }
+
+            //为删除多个按钮添加功能
+            $('delete').onclick=function (){
+                var mchk=document.querySelectorAll('.ccheck');
+                var ii=0;
+                for(var ii in mchk)
+                {
+                    if(mchk[ii].checked)
+                    {
+                        mchk[ii].parentNode.parentNode.remove();
+                    }
+                }
+
+            }
+        }
+
+
+        //通用获取元素方法
+        function $(id)
+        {
+            return document.getElementById(id);
+        }
+    </script>
+</head>
+<body>
+       <div id="mydiv">
+           <table id="mytable" border="1">
+               <thead>
+               <tr>
+                   <th>
+                       全选
+                       <input type="checkbox" id="allcheck">
+                   </th>
+                   <th>姓名</th>
+                   <th>年龄</th>
+                   <th>性别</th>
+                   <th>电话</th>
+                   <th>操作</th>
+               </tr>
+               </thead>
+               <tbody id="mtbody">
+                <tr>
+                    <td>
+                        <input type="checkbox" name="check" class="ccheck">
+                    </td>
+                    <td>tom</td>
+                    <td>20</td>
+                    <td>male</td>
+                    <td>110</td>
+                    <td><input type="button" value="删除" class="delete"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="check" class="ccheck">
+                    </td>
+                    <td>jack</td>
+                    <td>22</td>
+                    <td>male</td>
+                    <td>119</td>
+                    <td><input type="button" value="删除" class="delete"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="check" class="ccheck">
+                    </td>
+                    <td>alice</td>
+                    <td>25</td>
+                    <td>female</td>
+                    <td>120</td>
+                    <td><input type="button" value="删除" class="delete"></td>
+                </tr>
+                </tbody>
+
+                <tfoot>
+                <tr>
+                    <td>
+                        <input type="button" value="删除多个" id="delete">
+                    </td>
+                    <td colspan="5" style="text-align: right">
+                        <input type="button" value="从首行删除" id="deletefirst">
+                        <input type="button" value="从末行删除" id="deletelast">
+                    </td>
+                </tr>
+                </tfoot>
+           </table>
+           <hr>
+           <form>
+               姓名:<input type="text" width="100px" placeholder="请输入姓名" id="iname"><br>
+               年龄:<input type="text" width="100px" placeholder="请输入年龄" id="iage"><br>
+               性别:<input type="radio" id='m'  value="male" name="sex">男
+                   <input type="radio" id='f' value="female" name="sex">女<br>
+               电话:<input type="text" width="100px" placeholder="请输入电话" maxlength="3" required id="iphone"><br>
+               <input type="button" value="添加" id="add">
+               <input type="button" value="重置" id="reset"><br>
+               </form>
+       </div>
+
+</body>
+</html>

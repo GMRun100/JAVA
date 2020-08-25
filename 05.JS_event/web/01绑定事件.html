@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件</title>
+    <script>
+        function btn1(){
+            console.log(1111);
+        }
+
+        //当界面加载完毕才会执行此函数
+        //为页面加载完事件绑定一个回调函数
+        window.onload=function ()
+        {
+            //为点击事件绑定一个回调函数
+            document.getElementById('btn2').onclick=function (event){
+                console.log(2222);
+                //获取事件源方式一
+                console.log(event.srcElement);
+                //获取事件源方式二
+                console.log(this);   //this也表示事件源
+            }
+
+            //为复选框点击事件绑定回调函数
+            var cb=document.getElementsByName('hobbies');
+            for(var i in cb)
+            {
+                cb[i].onclick=function(){
+                    console.log(this.value);
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <!---静态绑定事件,利用标签的静态属性来绑定--->
+    <input type="button" onclick="btn1()" value="按钮1">
+
+    <!---通过JS代码来绑定事件--->
+    <input type="button" value="按钮2" id="btn2">
+
+    爱好：<input type="checkbox" name="hobbies" value="eat">吃饭
+        <input type="checkbox" name="hobbies" value="sleep">睡觉
+        <input type="checkbox" name="hobbies" value="run">跑步
+
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习搜索功能</title>
+    <style>
+        img{
+            width: 30px;
+            height:30px;
+        }
+    </style>
+    <script>
+        function change(){
+            if($('baidu').checked)
+            {
+                $('myimg').src="images/baidu.png";
+                $('myform').action='https://www.baidu.com/s?';
+                $('txtSearch').name='wd';
+                $('mysubmit').value='百度搜索'
+
+            }
+            else if($('sogou').checked)
+            {
+                $('myimg').src="images/sogou.png";
+                $('myform').action='https://www.sogou.com/web?';
+                $('txtSearch').name='query';
+                $('mysubmit').value='搜狗搜索'
+            }
+            else
+            {
+                $('myimg').src="images/360.png";
+                $('myform').action='https://www.so.com/s?';
+                $('txtSearch').name='q';
+                $('mysubmit').value='360搜索'
+            }
+        }
+
+        //简化获取元素
+        function $(id)
+        {
+            return document.getElementById(id);
+        }
+    </script>
+</head>
+<body>
+    <input type="radio" name="search" id="baidu" checked onclick="change()"><label for="baidu">百度</label>
+    <input type="radio" name="search" id="sogou" onclick="change()"><label for="sogou">搜狗</label>
+    <input type="radio" name="search" id="360" onclick="change()"><label for="360">360</label>
+    <form action="https://www.baidu.com/s?" method="get" id="myform">
+        <img src="images/baidu.png" alt="搜索图标" id="myimg"/>
+        <input type="text" name="wd" id="txtSearch" placeholder="请输入查询关键字">
+        <input type="submit" value="百度搜索" id="mysubmit">
+
+    </form>
+
+</body>
+</html>

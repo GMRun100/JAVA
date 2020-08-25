@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script>
+        function doadd(){
+            //1.创建节点
+            var myli=document.createElement('li');
+            //console.log(1111);
+
+            //2.节点中添加内容
+            myli.innerText='66666';
+            //console.log(li);
+
+            //3.添加节点
+            var obj_ul=document.getElementById('myul');
+            //obj_ul.appendChild(myli);
+
+            //4.在某一个子节点后面添加节点
+            var obj_2=document.getElementById('second');
+            //obj_ul.insertBefore(myli,obj_2);
+
+            //5.替换某个子节点的内容
+            //obj_ul.replaceChild(myli,obj_2);
+
+            //6.删除节点
+            obj_2.remove();
+
+
+
+
+
+
+        }
+    </script>
+
+</head>
+<body>
+    <input type="button" onclick="doadd()" value="添加元素">
+    <ul id="myul">
+        <li id="first">11111</li>
+        <li id="second">22222</li>
+        <li>33333</li>
+    </ul>
+</body>
+</html>
